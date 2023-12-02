@@ -1,5 +1,6 @@
 package com.example.proyectofinalgrupo4_v21fin
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -19,6 +20,13 @@ class EditProductInfoActivity : AppCompatActivity() {
         val txtDescProd: EditText = findViewById(R.id.editTextTextMultiLine)
         val txtPrice: EditText = findViewById(R.id.editTextTextPrice)
 
+        txtNameProd.isEnabled=false
+        txtDescProd.isEnabled=false
+        txtPrice.isEnabled=false
+
+        val btnEditName: Button = findViewById(R.id.button3)
+        val btnEditDesc: Button = findViewById(R.id.button4)
+        val btnEditPrice: Button = findViewById(R.id.button5)
 
         val btnSaveEdit: Button = findViewById(R.id.btnSaveEditProd)
 
@@ -27,31 +35,28 @@ class EditProductInfoActivity : AppCompatActivity() {
 
         val collectionRef = db.collection("Productos")
 
+        btnEditName.setOnClickListener {
+            txtNameProd.isEnabled=true
+            txtNameProd.setBackgroundColor(Color.parseColor("#B2EEA2"))
+        }
+        btnEditDesc.setOnClickListener {
+            txtDescProd.isEnabled=true
+            txtDescProd.setBackgroundColor(Color.parseColor("#B2EEA2"))
+        }
+        btnEditPrice.setOnClickListener {
+            txtPrice.isEnabled=true
+            txtPrice.setBackgroundColor(Color.parseColor("#B2EEA2"))
+        }
+
+
         btnSaveEdit.setOnClickListener {
             val nombre = txtNameProd.text.toString()
             val desc = txtDescProd.text.toString()
             val precio = txtPrice.text.toString()
 
-            db.collection("Productos").addSnapshotListener{snapshots,e->
-                if (e!=null){
-                    Log.w("Firebase","listen:error",e)
-                    return@addSnapshotListener
-                }
-                for (dc in snapshots!!.documentChanges){
-                    when (dc.type){
-                        DocumentChange.Type.ADDED ->{
-                            Log.d("Firebase","Data: "+dc.document.data)
-
-                        }
-                        DocumentChange.Type.MODIFIED -> {
-
-                        }
-                        DocumentChange.Type.REMOVED -> {
-
-                        }
-                    }
-                }
-            }
+            txtNameProd.isEnabled=false
+            txtDescProd.isEnabled=false
+            txtPrice.isEnabled=false
         }
 
     }

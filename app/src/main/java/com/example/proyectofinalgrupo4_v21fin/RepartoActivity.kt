@@ -1,5 +1,6 @@
 package com.example.proyectofinalgrupo4_v21fin
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -12,7 +13,8 @@ class RepartoActivity : AppCompatActivity() {
         val btnBack:Button = findViewById(R.id.btnBackMap)
 
         btnBack.setOnClickListener {
-
+            val intent = Intent(this, NavigationActivity::class.java)
+            startActivity(intent)
         }
     }
 }
