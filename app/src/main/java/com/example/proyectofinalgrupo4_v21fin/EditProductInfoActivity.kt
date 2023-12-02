@@ -37,15 +37,15 @@ class EditProductInfoActivity : AppCompatActivity() {
 
         btnEditName.setOnClickListener {
             txtNameProd.isEnabled=true
-            txtNameProd.setBackgroundColor(Color.parseColor("#B2EEA2"))
+            txtNameProd.setBackgroundColor(Color.parseColor("#08361c"))
         }
         btnEditDesc.setOnClickListener {
             txtDescProd.isEnabled=true
-            txtDescProd.setBackgroundColor(Color.parseColor("#B2EEA2"))
+            txtDescProd.setBackgroundColor(Color.parseColor("#08361c"))
         }
         btnEditPrice.setOnClickListener {
             txtPrice.isEnabled=true
-            txtPrice.setBackgroundColor(Color.parseColor("#B2EEA2"))
+            txtPrice.setBackgroundColor(Color.parseColor("#08361c"))
         }
 
 
@@ -57,6 +57,11 @@ class EditProductInfoActivity : AppCompatActivity() {
             txtNameProd.isEnabled=false
             txtDescProd.isEnabled=false
             txtPrice.isEnabled=false
+
+            txtPrice.setBackgroundColor(Color.parseColor("#000000"))
+            txtDescProd.setBackgroundColor(Color.parseColor("#000000"))
+            txtPrice.setBackgroundColor(Color.parseColor("#000000"))
+
         }
 
     }
